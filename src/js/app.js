@@ -13,11 +13,11 @@ let promotion  =  {
             }
         }
     },
-    template: `<div>
-               <img class="col-md-12 col-xs-12" :src="item.promo_image_url">
-               <div class="col-md-12"><a :href="promotionLink" @click.prevent="closePromotionList" :title="item.promotion_name">{{ item.promotion_name }}</a></div>
-               <p class="col-md-12">{{ item.summary }}</p>
-               <div class="col-md-12">Next Drawing Date: {{ formatedDate }}</div>
+    template: `<div class="col-md-12 margin_large">
+                <div><img class="box_shadow" :src="item.promo_image_url"></div>
+               <div class="margin_small"><a :href="promotionLink" @click.prevent="closePromotionList" :title="item.promotion_name" class="promotion_link">{{ item.promotion_name }}</a></div>
+               <p class="promotion_summary">{{ item.summary }}</p>
+               <div class="next_drawing">Next Drawing Date: {{ formatedDate }}</div>
                </div>`,
     methods: {
         closePromotionList () {

@@ -1,3 +1,29 @@
+body {
+  font-family: Arial; }
+
+.promotion_link {
+  font-size: 24px;
+  font-weight: bold;
+  color: #036dbe; }
+
+.promotion_summary, .next_drawing {
+  font-size: 14px;
+  color: #444; }
+
+.margin_small {
+  margin: 10px 0; }
+
+.margin_large {
+  margin: 40px 0; }
+
+.box_shadow {
+  -moz-box-shadow: 8px 8px 12px #aaa;
+  -webkit-box-shadow: 8px 8px 12px #aaa;
+  box-shadow: 8px 8px 12px #aaa; }
+
+@media screen and (max-width: 750px) {
+  img {
+    width: 100%; } }
 .stacktable {
   width: 100%; }
 
