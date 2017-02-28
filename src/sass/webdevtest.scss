@@ -1,16 +1,25 @@
+$text_color: #444;
+$link_color: #036dbe;
+
 body{
   font-family: Arial;
+}
+
+
+
+img{
+  width: 100%;
 }
 
 .promotion_link{
   font-size: 24px;
   font-weight: bold;
-  color: #036dbe;
+  color: $link_color;
 }
 
-.promotion_summary, .next_drawing{
+.simple_text{
   font-size: 14px;
-  color: #444;
+  color: $text_color;
 }
 
 .margin_small{
@@ -31,10 +40,9 @@ body{
   @include box_shadow(8px, 8px, 12px, #aaa);
 }
 
-@media screen and (max-width: 750px) {
-  img{
-    width: 100%;
-  }
-}
 
+
+
+
+@import "view";
 @import "stacktable";

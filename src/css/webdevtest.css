@@ -1,12 +1,15 @@
 body {
   font-family: Arial; }
 
+img {
+  width: 100%; }
+
 .promotion_link {
   font-size: 24px;
   font-weight: bold;
   color: #036dbe; }
 
-.promotion_summary, .next_drawing {
+.simple_text, .simple_text_line {
   font-size: 14px;
   color: #444; }
 
@@ -21,11 +24,51 @@ body {
   -webkit-box-shadow: 8px 8px 12px #aaa;
   box-shadow: 8px 8px 12px #aaa; }
 
-@media screen and (max-width: 750px) {
-  img {
-    width: 100%; } }
+@media screen and (min-width: 480px) {
+  .title1 {
+    font-size: 24px;
+    color: #000; }
+
+  .linear_gradient {
+    background: #fff;
+    background: -webkit-linear-gradient(#ccc, #fff);
+    background: -o-linear-gradient(#ccc, #fff);
+    background: -moz-linear-gradient(#ccc, #fff);
+    background: linear-gradient(#ccc, #fff); } }
+.title2 {
+  font-size: 18px;
+  font-weight: bold;
+  color: #000;
+  text-align: center; }
+
+.simple_text_line {
+  line-height: 24px; }
+
+.bigTitle {
+  display: none; }
+
+@media screen and (max-width: 479px) {
+  .bigTitle {
+    display: block;
+    font-size: 24px;
+    font-weight: bold;
+    color: #b20000;
+    text-align: center; }
+
+  .notice {
+    color: #b20000; }
+
+  .title1 {
+    display: none; } }
+.notice {
+  text-align: center; }
+
+.link {
+  color: #036dbe; }
+
 .stacktable {
-  width: 100%; }
+  width: 100%;
+  background-color: #ccc; }
 
 .st-head-row {
   padding-top: 1em; }
@@ -43,7 +86,6 @@ body {
   width: 49%;
   padding-left: 1%; }
 
-/* RESPONSIVE EXAMPLE */
 .stacktable.large-only {
   display: table; }
 
@@ -55,6 +97,20 @@ body {
     display: none; }
 
   .stacktable.small-only {
-    display: table; } }
+    display: table; }
+
+  .table {
+    margin-bottom: 0; } }
+thead, .st-key {
+  text-transform: uppercase;
+  font-weight: bold; }
+
+@media screen and (min-width: 480px) {
+  th, td {
+    text-align: center; }
+
+  th {
+    color: #fff;
+    background-color: #555; } }
 
 /*# sourceMappingURL=webdevtest.css.map */

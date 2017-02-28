@@ -16,8 +16,8 @@ let promotion  =  {
     template: `<div class="col-md-12 margin_large">
                 <div><img class="box_shadow" :src="item.promo_image_url"></div>
                <div class="margin_small"><a :href="promotionLink" @click.prevent="closePromotionList" :title="item.promotion_name" class="promotion_link">{{ item.promotion_name }}</a></div>
-               <p class="promotion_summary">{{ item.summary }}</p>
-               <div class="next_drawing">Next Drawing Date: {{ formatedDate }}</div>
+               <p class="simple_text">{{ item.summary }}</p>
+               <div class="simple_text">Next Drawing Date: {{ formatedDate }}</div>
                </div>`,
     methods: {
         closePromotionList () {

@@ -1,0 +1,60 @@
+@mixin linear_gradient($top, $bottom){
+  background: $bottom;
+  background: -webkit-linear-gradient($top, $bottom);
+  background: -o-linear-gradient($top, $bottom);
+  background: -moz-linear-gradient($top, $bottom);
+  background: linear-gradient($top, $bottom);
+}
+
+@media screen and (min-width: 480px){
+  .title1{
+    font-size: 24px;
+    color: #000;
+  }
+
+  .linear_gradient{
+    @include linear_gradient(#ccc, #fff);
+  }
+}
+
+.title2{
+  font-size: 18px;
+  font-weight: bold;
+  color: #000;
+  text-align: center;
+}
+
+.simple_text_line{
+  @extend .simple_text;
+  line-height: 24px;
+}
+
+.bigTitle{
+  display: none;
+}
+
+@media screen and (max-width: 479px){
+  .bigTitle{
+    display: block;
+    font-size: 24px;
+    font-weight: bold;
+    color: #b20000;
+    text-align: center;
+  }
+
+  .notice{
+    color: #b20000;
+  }
+
+  .title1{
+    display: none;
+  }
+}
+
+.notice{
+  text-align: center;
+}
+
+.link{
+  color: $link_color;
+}
