@@ -28,18 +28,20 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-    <!-- Main jumbotron for a primary marketing message or call to action -->
 
         <div class="container" id="app">
-            <div class="row" v-for="item in items">
-                <img class="col-md-12 col-xs-12" :src="item.promo_image_url">
-                <div class="col-md-12"><a href="?promo=promo01" @click.prevent="link" :title="item.promotion_name">{{ item.promotion_name }}</a></div>
-                <p class="col-md-12">{{ item.summary }}</p>
-                <div class="col-md-12">Next Drawing Date: {{ item.drawings[0].drawing_date | formatdate }}</div>
+            <div class="row" v-for="(item, index) in items" v-if="!displayPromotionView">
+                <promotion :item="item" :index="index" @closepromotionlist="activePromotionView"></promotion>
+            </div>
+
+            <div class="row" v-if="displayPromotionView">
+                <img class="col-md-12 col-xs-12" :src="currentItem.promo_image_url">
+                <h1>{{ currentItem.promotion_name }}</h1>
+                <h2>{{ currentItem.summary }}</h2>
+                <h3>Drawing Schedule</h3>
+
             </div>
         </div>
-
-
 
 
         <script

@@ -1,19 +1,49 @@
-let formatdate = function(value) {
-    var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    var d = new Date(value);
-    return d.toLocaleDateString("en-US", options);
+let promotion  =  {
+    props: ['item', 'index'],
+    computed: {
+        formatedDate: {
+            get: function() {
+                return vm.$options.filters.formatdate(this.item.drawings[0].drawing_date);
+            }
+        },
+        promotionLink: {
+            get: function() {
+                let page = Number(this.index) + 1;
+                return '?promo=promo0'+ page;
+            }
+        }
+    },
+    template: `<div>
+               <img class="col-md-12 col-xs-12" :src="item.promo_image_url">
+               <div class="col-md-12"><a :href="promotionLink" @click.prevent="closePromotionList" :title="item.promotion_name">{{ item.promotion_name }}</a></div>
+               <p class="col-md-12">{{ item.summary }}</p>
+               <div class="col-md-12">Next Drawing Date: {{ formatedDate }}</div>
+               </div>`,
+    methods: {
+        closePromotionList () {
+            this.$emit('closepromotionlist', this.item);
+        }
+    }
 };
 
-//var apiURL = 'https://api.github.com/repositories/11730342/commits?per_page=5&sha=';
-var apiURL = '/js/webdevtest-data.js';
+
+let formatdate = function(value) {
+    let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    let d = new Date(value);
+    return d.toLocaleDateString("en-US", options);
+};
 
 let vm = new Vue({
     el: '#app',
 
+    components: { promotion },
+
     filters: { formatdate },
 
     data: {
-        items: null
+        items: null,
+        displayPromotionView: false,
+        currentItem: null
     },
 
     created: function() {
@@ -22,14 +52,15 @@ let vm = new Vue({
 
     methods: {
         fetchData: function() {
-            var self = this;
+            let self = this;
+            let apiURL = '/js/webdevtest-data.js';
             $.get(apiURL, function(data){
               self.items = data.promotion_objects;
-              console.log('data fetched');
           }, 'json')
         },
-        link : function(e) {
-            console.log(e.target);
+        activePromotionView : function(item) {
+            this.displayPromotionView = true;
+            this.currentItem = item;
         }
     },
 
