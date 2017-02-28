@@ -33,6 +33,7 @@ let formatdate = function(value) {
     return d.toLocaleDateString("en-US", options);
 };
 
+
 let vm = new Vue({
     el: '#app',
 
@@ -50,6 +51,10 @@ let vm = new Vue({
         this.fetchData();
     },
 
+    updated: function() {
+        this.displayTable();
+    },
+
     methods: {
         fetchData: function() {
             let self = this;
@@ -58,9 +63,15 @@ let vm = new Vue({
               self.items = data.promotion_objects;
           }, 'json')
         },
-        activePromotionView : function(item) {
+        activePromotionView: function(item) {
             this.displayPromotionView = true;
             this.currentItem = item;
+        },
+        activePromotionList: function() {
+            this.displayPromotionView = false;
+        },
+        displayTable: function() {
+            $('.table').cardtable();
         }
     },
 

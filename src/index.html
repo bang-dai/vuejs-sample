@@ -37,9 +37,46 @@
             <div class="row" v-if="displayPromotionView">
                 <img class="col-md-12 col-xs-12" :src="currentItem.promo_image_url">
                 <h1>{{ currentItem.promotion_name }}</h1>
-                <h2>{{ currentItem.summary }}</h2>
-                <h3>Drawing Schedule</h3>
-
+                <p>{{ currentItem.summary }}</p>
+                <h2>Drawing Schedule</h2>
+                <div class="col-sm-12">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>Prize</th>
+                                <th>Entry Deadline</th>
+                                <th>Drawing Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="drawing in currentItem.drawings">
+                                <td>{{ drawing.prize }}</td>
+                                <td>{{ drawing.entry_deadline | formatdate }}</td>
+                                <td>{{ drawing.drawing_date | formatdate }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>{{ currentItem.entry_info }}</p>
+                <h2>Your Total Tickets Entered: {{ currentItem.entries.length }}</h2>
+                <p>All entries are locked in at the time they are submitted and cannot be deleted</p>
+                <div class="col-sm-12">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th>Entry number</th>
+                            <th>Date</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr v-for="entry in currentItem.entries">
+                            <td>{{ entry.entry_number }}</td>
+                            <td>{{ entry.date | formatdate }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <a href="#" title="Go back" @click.prevent="activePromotionList">Back to the promotion list</a>
             </div>
         </div>
 
@@ -49,6 +86,7 @@
                 integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
                 crossorigin="anonymous"></script>
         <script src="js/vendor/bootstrap.min.js"></script>
+        <script src="js/vendor/stacktable.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.1/vue.js"></script>
 
         <script src="js/app.js"></script>
