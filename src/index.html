@@ -49,7 +49,7 @@
                             </thead>
                             <tbody>
                                 <tr v-for="drawing in currentItem.drawings">
-                                    <td>{{ drawing.prize }}</td>
+                                    <td>{{ drawing.prize | formatmoney }}</td>
                                     <td>{{ drawing.entry_deadline | formatdate }}</td>
                                     <td>{{ drawing.drawing_date | formatdate }}</td>
                                 </tr>
@@ -87,7 +87,7 @@
                 crossorigin="anonymous"></script>
         <script src="js/vendor/bootstrap.min.js"></script>
         <script src="js/vendor/stacktable.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.1/vue.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.1/vue.min.js"></script>
 
         <script src="js/app.js"></script>
         <script src="js/main.js"></script>

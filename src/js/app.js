@@ -1,4 +1,4 @@
-let promotion  =  {
+var promotion  =  {
     props: ['item', 'index'],
     computed: {
         formatedDate: {
@@ -8,7 +8,7 @@ let promotion  =  {
         },
         promotionLink: {
             get: function() {
-                let page = Number(this.index) + 1;
+                var page = Number(this.index) + 1;
                 return '?promo=promo0'+ page;
             }
         }
@@ -27,19 +27,24 @@ let promotion  =  {
 };
 
 
-let formatdate = function(value) {
-    let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    let d = new Date(value);
+var formatdate = function(value) {
+    var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    var d = new Date(value);
     return d.toLocaleDateString("en-US", options);
 };
 
+var formatmoney = function(value) {
+    var money = value.split(' ');
+    return  money[0];
+}
 
-let vm = new Vue({
+
+var vm = new Vue({
     el: '#app',
 
     components: { promotion },
 
-    filters: { formatdate },
+    filters: { formatdate, formatmoney },
 
     data: {
         items: null,
@@ -57,8 +62,8 @@ let vm = new Vue({
 
     methods: {
         fetchData: function() {
-            let self = this;
-            let apiURL = '/js/webdevtest-data.js';
+            var self = this;
+            var apiURL = '/js/webdevtest-data.js';
             $.get(apiURL, function(data){
               self.items = data.promotion_objects;
           }, 'json')
